@@ -150,7 +150,7 @@
 
 .craft-btn {
   position: absolute;
-  bottom: calc(100% - 4px);
+  bottom: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
   border: 3px solid #4a3426;
@@ -170,7 +170,7 @@
 @keyframes craft-in {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(24px) scale(0.6);
+    transform: translateX(-50%) translateY(10px) scale(0.6);
   }
   to {
     opacity: 1;
