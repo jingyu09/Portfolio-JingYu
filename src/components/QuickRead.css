@@ -1,9 +1,9 @@
 .sheet.quick {
-  width: min(780px, 100%);
+  width: min(860px, 100%);
 }
 
 .quick-role {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   opacity: 0.7;
 }
@@ -16,6 +16,6 @@
 
 .quick-section h3 {
   margin: 0 0 10px;
-  font-size: 20px;
+  font-size: 26px;
   color: #b8651b;
 }

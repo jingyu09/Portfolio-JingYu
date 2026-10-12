@@ -20,7 +20,8 @@
 }
 
 .sheet {
-  width: min(720px, 100%);
+  width: min(820px, 100%);
+  font-size: 20px;
   max-height: min(88svh, 780px);
   overflow-y: auto;
   background: #fffaf0;
@@ -53,7 +54,7 @@
 .sheet-head h2 {
   margin: 0;
   flex: 1;
-  font-size: 26px;
+  font-size: 34px;
 }
 
 .icon-close {
@@ -82,8 +83,9 @@
   border: 2px solid #4a3426;
   background: #f39c32;
   color: #fff;
+  font-size: 18px;
   font-weight: 700;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 3px 0 #4a3426;

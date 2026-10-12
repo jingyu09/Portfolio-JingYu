@@ -156,9 +156,9 @@
   border: 3px solid #4a3426;
   background: linear-gradient(#ffb347, #f39c32);
   color: #fff;
-  font-size: 17px;
+  font-size: 21px;
   font-weight: 800;
-  padding: 10px 22px;
+  padding: 12px 26px;
   border-radius: 999px;
   cursor: pointer;
   white-space: nowrap;
@@ -194,7 +194,7 @@
 
 .dock-caption {
   margin: 0;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 60, 20, 0.7);

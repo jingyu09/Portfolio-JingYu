@@ -34,7 +34,7 @@
 }
 
 .fact dt {
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   opacity: 0.65;
@@ -52,7 +52,7 @@
 
 .tag-group h4 {
   margin: 0 0 6px;
-  font-size: 13px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   opacity: 0.65;
@@ -69,7 +69,7 @@
   border: 2px solid #4a3426;
   border-radius: 999px;
   padding: 4px 12px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   box-shadow: 0 2px 0 #4a3426;
 }
@@ -94,11 +94,11 @@
 
 .t-item h4 {
   margin: 0;
-  font-size: 17px;
+  font-size: 22px;
 }
 
 .t-period {
-  font-size: 13px;
+  font-size: 17px;
   opacity: 0.7;
   white-space: nowrap;
 }

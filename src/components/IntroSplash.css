@@ -1,0 +1,53 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(180deg, #7cc4f2 0%, #a9dcfa 60%, #c9ecfb 100%);
+  transition: opacity 0.5s ease;
+}
+
+.intro.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-kicker {
+  margin: 0 0 14px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8651b;
+  font-weight: 700;
+}
+
+.intro-name {
+  margin: 0;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: clamp(34px, 8vw, 84px);
+  line-height: 1.1;
+  color: #4a3426;
+  text-shadow: 0 4px 0 rgba(255, 255, 255, 0.7);
+}
+
+.intro-role {
+  margin: 18px 0 0;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: clamp(18px, 3.6vw, 34px);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #d9822b;
+  min-height: 1.4em;
+}
+
+.intro-skip {
+  margin: 44px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(74, 52, 38, 0.65);
+}

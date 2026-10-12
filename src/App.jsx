@@ -7,8 +7,21 @@ import Workbench from "./components/Workbench";
 import SectionModal from "./components/SectionModal";
 import QuickRead from "./components/QuickRead";
 import ContactTicket from "./components/ContactTicket";
+import IntroSplash from "./components/IntroSplash";
+import LogoLoop from "./components/LogoLoop";
+import PixelMenu from "./components/PixelMenu";
+import { logos } from "./data/logos";
 
 const STORAGE_KEY = "jingyu-portfolio-viewed";
+const INTRO_KEY = "jingyu-portfolio-intro";
+
+function introAlreadySeen() {
+  try {
+    return sessionStorage.getItem(INTRO_KEY) === "1";
+  } catch (error) {
+    return false;
+  }
+}
 
 function loadViewed() {
   try {
@@ -28,12 +41,14 @@ export default function App() {
   const [crafting, setCrafting] = useState(false);
   const [crafted, setCrafted] = useState(false);
   const [ticketOpen, setTicketOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(() => !introAlreadySeen());
   const craftTimer = useRef(null);
   const popTimer = useRef(null);
 
   const count = sections.filter((s) => viewed[s.id]).length;
   const ready = count === sections.length;
-  const modalOpen = openId !== null || quickOpen || ticketOpen;
+  const modalOpen = openId !== null || quickOpen || ticketOpen || menuOpen || showIntro;
   const openData = sections.find((s) => s.id === openId) || null;
 
   useEffect(() => {
@@ -66,6 +81,17 @@ export default function App() {
     setOpenId(null);
   }, [openId]);
 
+  const finishIntro = useCallback(() => {
+    try {
+      sessionStorage.setItem(INTRO_KEY, "1");
+    } catch (error) {
+      // fine: the intro will just play again on refresh
+    }
+    setShowIntro(false);
+  }, []);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   const craft = () => {
     if (crafting || crafted) return;
     setCrafting(true);
@@ -91,6 +117,9 @@ export default function App() {
             </span>
             <button className="pill-btn" onClick={() => setQuickOpen(true)}>
               Quick read
+            </button>
+            <button className="pill-btn" onClick={() => setMenuOpen(true)} aria-haspopup="dialog">
+              Menu
             </button>
           </div>
         </header>
@@ -124,7 +153,29 @@ export default function App() {
             onOpenTicket={() => setTicketOpen(true)}
           />
         </footer>
+
+        <LogoLoop logos={logos} />
       </div>
+
+      <PixelMenu
+        open={menuOpen}
+        onClose={closeMenu}
+        crafted={crafted}
+        onPickSection={(id) => {
+          setMenuOpen(false);
+          setIndex(sections.findIndex((x) => x.id === id));
+          openSection(id);
+        }}
+        onQuickRead={() => {
+          setMenuOpen(false);
+          setQuickOpen(true);
+        }}
+        onTicket={() => {
+          setMenuOpen(false);
+          setTicketOpen(true);
+        }}
+      />
+      {showIntro ? <IntroSplash onFinish={finishIntro} /> : null}
 
       {openData ? <SectionModal section={openData} onClose={closeSection} /> : null}
       {quickOpen ? <QuickRead onClose={() => setQuickOpen(false)} /> : null}
