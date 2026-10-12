@@ -258,7 +258,7 @@ export default function ContactTicket({ onClose }) {
                   ? "Demo mode: nothing was really sent, because no access key is set yet."
                   : "Message sent. Thank you, I'll reply by email!"}
               </p>
-              <button type="button" className="solid-btn small" onClick={writeAnother}>
+              <button type="button" className="solid-btn small" onClick={writeAnother} style={{ position: 'relative', zIndex: 50 }}>
                 Write another
               </button>
             </div>

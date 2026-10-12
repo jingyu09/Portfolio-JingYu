@@ -8,7 +8,7 @@ export const profile = {
   showPhone: true, // set to false to hide the phone number everywhere
   github: "https://github.com/jingyu09",
   linkedin: "https://www.linkedin.com/in/heng-jing-yu-212015392",
-  resume: "/CV_HENG_JING_YU.pdf" // put the PDF in the public/ folder with this exact name
+  resume: "/CV_HENG_JING_YU.pdf"
 };
 
 // slot = position on the 3x3 workbench (0-8, left to right, top to bottom).
