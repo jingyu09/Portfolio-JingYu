@@ -190,8 +190,8 @@ export default function ContactTicket({ onClose }) {
         <TearTicket
           orientation="vertical"
           width={420}
-          height={600}
-          stubSize={340}
+          height={660}
+          stubSize={380}
           radius={18}
           holes={14}
           holeSize={6}

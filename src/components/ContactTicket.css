@@ -100,8 +100,6 @@
 }
 
 .stub-ui {
-  position: absolute;
-  inset: 0;
   padding: 20px 28px 12px;
   display: flex;
   flex-direction: column;
