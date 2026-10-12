@@ -1,0 +1,21 @@
+.sheet.quick {
+  width: min(780px, 100%);
+}
+
+.quick-role {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.quick-section {
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 2px dashed rgba(74, 52, 38, 0.25);
+}
+
+.quick-section h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #b8651b;
+}

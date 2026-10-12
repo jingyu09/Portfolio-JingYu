@@ -1,0 +1,137 @@
+:root {
+  --ink: #4a3426;
+  --paper: #fff9ee;
+  --accent: #f39c32;
+  --accent-dark: #d9822b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+  background: #8fd0f8;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px 6px;
+}
+
+.brand-name {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.brand-role {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-pill {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(6px);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pill-btn {
+  border: 2px solid var(--ink);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.pill-btn:hover {
+  transform: translateY(-1px);
+}
+
+.pill-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ink);
+}
+
+.stage {
+  flex: 1;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage-hint {
+  margin: 4px 16px 0;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.dock {
+  display: flex;
+  justify-content: center;
+  padding: 26px 12px 18px;
+}
+
+.pixel-icon {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.pixel-icon.is-dim {
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    padding: 12px 14px 4px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .progress-pill {
+    display: none;
+  }
+}

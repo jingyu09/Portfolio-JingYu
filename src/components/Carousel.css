@@ -1,0 +1,193 @@
+.carousel {
+  position: relative;
+  flex: 1;
+  min-height: 330px;
+  perspective: 1200px;
+  --card-w: min(74vw, 340px);
+  --card-h: 290px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carousel-track {
+  position: absolute;
+  inset: 0 0 34px 0;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--card-w);
+  height: var(--card-h);
+  transform: translate(-50%, -50%) translateX(calc(var(--off) * 58%)) translateZ(calc(var(--abs) * -140px))
+    rotateY(calc(var(--off) * -22deg)) scale(calc(1 - var(--abs) * 0.1));
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, filter 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 20px 18px 16px;
+  background: rgba(255, 252, 244, 0.86);
+  backdrop-filter: blur(6px);
+  border: 3px solid #4a3426;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 #4a3426, 0 16px 28px rgba(20, 50, 80, 0.25);
+  color: #4a3426;
+  cursor: pointer;
+  outline: none;
+}
+
+.card.is-center {
+  animation: card-float 3.4s ease-in-out infinite;
+}
+
+.card.is-center.is-seen {
+  animation: none;
+}
+
+@keyframes card-float {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -6px;
+  }
+}
+
+.card:focus-visible {
+  box-shadow: 0 6px 0 #4a3426, 0 0 0 4px rgba(243, 156, 50, 0.7);
+}
+
+.card-icon {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(243, 156, 50, 0.16);
+  border: 2px dashed rgba(74, 52, 38, 0.35);
+}
+
+.card h3 {
+  margin: 4px 0 0;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.card-foot {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chip {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #ffe1b8;
+  border: 2px solid #4a3426;
+}
+
+.chip-seen {
+  background: #c9f0c4;
+}
+
+.cta {
+  font-weight: 800;
+  color: #b8651b;
+}
+
+.nav {
+  position: absolute;
+  top: calc(50% - 17px);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid #4a3426;
+  background: #fffaf0;
+  color: #4a3426;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 30;
+  box-shadow: 0 3px 0 #4a3426;
+  transition: transform 0.12s ease;
+}
+
+.nav:hover {
+  transform: scale(1.08);
+}
+
+.nav.prev {
+  left: max(10px, calc(50% - 300px));
+}
+
+.nav.next {
+  right: max(10px, calc(50% - 300px));
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 30;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 2px solid #4a3426;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.seen {
+  background: #8fdc78;
+}
+
+.dot.on {
+  background: #f39c32;
+  transform: scale(1.25);
+}
+
+@media (max-width: 640px) {
+  .carousel {
+    --card-h: 300px;
+  }
+
+  .nav {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card.is-center {
+    animation: none;
+  }
+}

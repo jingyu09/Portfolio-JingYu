@@ -1,0 +1,107 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(24, 56, 88, 0.45);
+  backdrop-filter: blur(4px);
+  animation: overlay-in 0.2s ease;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sheet {
+  width: min(720px, 100%);
+  max-height: min(88svh, 780px);
+  overflow-y: auto;
+  background: #fffaf0;
+  color: #4a3426;
+  border: 3px solid #4a3426;
+  border-radius: 22px;
+  padding: 20px 24px 22px;
+  box-shadow: 0 8px 0 #4a3426, 0 24px 40px rgba(0, 0, 0, 0.25);
+  animation: sheet-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sheet-head h2 {
+  margin: 0;
+  flex: 1;
+  font-size: 26px;
+}
+
+.icon-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #4a3426;
+  background: #fff;
+  color: #4a3426;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.icon-close:hover {
+  background: #ffe1b8;
+}
+
+.sheet-foot {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.solid-btn {
+  border: 2px solid #4a3426;
+  background: #f39c32;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #4a3426;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.solid-btn:hover {
+  transform: translateY(-1px);
+}
+
+.solid-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #4a3426;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .sheet {
+    animation: none;
+  }
+}

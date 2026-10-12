@@ -1,0 +1,129 @@
+.blocks {
+  display: grid;
+  gap: 16px;
+}
+
+.b-text {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.b-list {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 8px;
+  line-height: 1.55;
+}
+
+.b-list li::marker {
+  color: #f39c32;
+}
+
+.b-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.fact {
+  background: rgba(243, 156, 50, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.fact dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.fact dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+}
+
+.b-tags {
+  display: grid;
+  gap: 14px;
+}
+
+.tag-group h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: #fff;
+  border: 2px solid #4a3426;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 0 #4a3426;
+}
+
+.b-timeline {
+  display: grid;
+  gap: 18px;
+}
+
+.t-item {
+  border-left: 4px solid #f39c32;
+  padding-left: 14px;
+}
+
+.t-item header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  align-items: baseline;
+}
+
+.t-item h4 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.t-period {
+  font-size: 13px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.t-org {
+  margin: 2px 0 8px;
+  font-weight: 600;
+  color: #b8651b;
+}
+
+.b-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.b-links a {
+  color: #b8651b;
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  .b-facts {
+    grid-template-columns: 1fr;
+  }
+}
