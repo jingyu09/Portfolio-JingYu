@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import TearTicket from "./reactbits/TearTicket";
 import PeekRating from "./reactbits/PeekRating";
 import { profile } from "../data/portfolio";
@@ -21,6 +21,7 @@ export default function ContactTicket({ onClose }) {
   const [demo, setDemo] = useState(false);
   const [copied, setCopied] = useState(false);
   const closeRef = useRef(null);
+  const wrapRef = useRef(null);
   const copyTimer = useRef(null);
 
   const emailValid = EMAIL_PATTERN.test(email.trim());
@@ -35,6 +36,26 @@ export default function ContactTicket({ onClose }) {
   }, [onClose]);
 
   useEffect(() => () => clearTimeout(copyTimer.current), []);
+
+  // Scale the whole ticket to fit the screen, so it is never cropped or off-centre.
+  useLayoutEffect(() => {
+    const fit = () => {
+      const el = wrapRef.current;
+      if (!el) return;
+      const vv = window.visualViewport;
+      const vw = vv ? vv.width : window.innerWidth;
+      const vh = vv ? vv.height : window.innerHeight;
+      const f = Math.min(0.96, (vw - 16) / el.offsetWidth, (vh - 16) / el.offsetHeight);
+      el.style.setProperty("--fit", String(Math.max(0.4, f)));
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    if (window.visualViewport) window.visualViewport.addEventListener("resize", fit);
+    return () => {
+      window.removeEventListener("resize", fit);
+      if (window.visualViewport) window.visualViewport.removeEventListener("resize", fit);
+    };
+  }, []);
 
   // Tearing the stub (or pressing the fallback button) sends the message.
   const submit = async () => {
@@ -182,7 +203,7 @@ export default function ContactTicket({ onClose }) {
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <div className="ticket-wrap" role="dialog" aria-modal="true" aria-label="Contact ticket" onKeyDownCapture={guardKeys}>
+      <div ref={wrapRef} className="ticket-wrap" role="dialog" aria-modal="true" aria-label="Contact ticket" onKeyDownCapture={guardKeys}>
         <button ref={closeRef} className="icon-close ticket-close" onClick={onClose} aria-label="Close ticket">
           ×
         </button>
@@ -190,7 +211,7 @@ export default function ContactTicket({ onClose }) {
         <TearTicket
           orientation="vertical"
           width={460}
-          height={755}
+          height={735}
           stubSize={410}
           radius={18}
           holes={14}

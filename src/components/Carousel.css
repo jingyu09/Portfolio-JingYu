@@ -6,7 +6,7 @@
   perspective: 1200px;
   --card-h: clamp(320px, 44svh, 400px);
   --card-w: min(80vw, 420px);
-  touch-action: pan-y;
+  touch-action: none;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
@@ -15,7 +15,7 @@
 .carousel-track {
   position: absolute;
   inset: 0 0 34px 0;
-  transform-style: preserve-3d;
+  perspective: 1200px;
 }
 
 .card {
@@ -32,8 +32,7 @@
   text-align: center;
   gap: 8px;
   padding: 20px 18px 16px;
-  background: rgba(255, 252, 244, 0.86);
-  backdrop-filter: blur(6px);
+  background: #fffcf4;
   border: 3px solid #4a3426;
   border-radius: 24px;
   box-shadow: 0 6px 0 #4a3426, 0 16px 28px rgba(20, 50, 80, 0.25);
@@ -198,25 +197,39 @@
 
 @media (max-width: 640px) {
   .carousel {
-    --card-h: clamp(300px, 42svh, 380px);
+    --card-w: min(62vw, 290px);
+    --card-h: clamp(236px, 30svh, 290px);
   }
 
   .card {
-    padding: 16px 14px 14px;
+    padding: 14px 12px 12px;
   }
 
   .card h3 {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .card p {
-    font-size: 19px;
+    font-size: 17px;
   }
 
-  .nav {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+  .card-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 16px;
+  }
+
+  .card-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .chip {
+    font-size: 14px;
+  }
+
+  .cta {
+    font-size: 16px;
   }
 }
 

@@ -25,15 +25,16 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
     vel: 0,
     raf: 0,
     lastFrame: 0,
-    lastIdx: index
+    lastIdx: index,
+    tapAt: 0
   }).current;
 
   const cardWidth = () => (cardRefs.current[0] ? cardRefs.current[0].offsetWidth : 340);
 
   const paint = () => {
     const cardW = cardWidth();
-    const radius = cardW * 1.05;
-    const theta = 0.52;
+    const radius = cardW * 1.2;
+    const theta = 0.55;
     cardRefs.current.forEach((el, i) => {
       if (!el) return;
       const d = wrap(i - s.pos + n / 2, n) - n / 2;
@@ -42,16 +43,15 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
       const x = Math.sin(a) * radius;
       const z = (Math.cos(a) - 1) * radius * 0.9;
       const rot = -a * 36;
-      let opacity;
-      if (abs <= 1) opacity = 1 - abs * 0.2;
-      else if (abs <= 2) opacity = 0.8 - (abs - 1) * 0.35;
-      else opacity = Math.max(0, 0.45 - (abs - 2) * 1.1);
+      // Only the two neighbours stay visible; cards further away fade out completely,
+      // so the text of overlapping cards never shows through each other.
+      const opacity = abs <= 1 ? 1 - abs * 0.12 : Math.max(0, 0.88 * (2 - abs));
       el.style.transform = `translate(-50%, -50%) translate3d(${x}px, 0, ${z}px) rotateY(${rot}deg) scale(${
-        1 - Math.min(abs, 3) * 0.07
+        1 - Math.min(abs, 3) * 0.09
       })`;
       el.style.opacity = String(opacity);
       el.style.zIndex = String(100 - Math.round(abs * 10));
-      el.style.pointerEvents = abs > 2.4 ? "none" : "auto";
+      el.style.pointerEvents = abs > 1.6 ? "none" : "auto";
       el.classList.toggle("is-center", abs < 0.5);
     });
   };
@@ -145,12 +145,29 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
       s.lastX = e.clientX;
       s.lastT = now;
     };
-    const up = () => {
+    const up = (e) => {
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerup", up);
       window.removeEventListener("pointercancel", up);
       if (!s.dragging) return;
       s.dragging = false;
+      // A tap beside the centre card glides to the next card on that side.
+      const center = cardRefs.current[wrap(Math.round(s.pos), n)];
+      if (e.type === "pointerup" && !s.moved && center) {
+        const r = center.getBoundingClientRect();
+        if (e.clientX > r.right + 2) {
+          s.tapAt = performance.now();
+          s.target = Math.round(s.pos) + 1;
+          kick();
+          return;
+        }
+        if (e.clientX < r.left - 2) {
+          s.tapAt = performance.now();
+          s.target = Math.round(s.pos) - 1;
+          kick();
+          return;
+        }
+      }
       const perSecond = (-s.vel / spacing()) * 1000;
       const projected = s.pos + perSecond * 0.22;
       s.target = Math.round(Math.max(s.pos - 2, Math.min(s.pos + 2, projected)));
@@ -162,6 +179,7 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
   };
 
   const activate = (i) => {
+    if (performance.now() - s.tapAt < 600) return;
     if (s.moved) {
       s.moved = false;
       return;

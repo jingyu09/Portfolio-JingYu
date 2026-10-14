@@ -1,25 +1,29 @@
 .ticket-overlay {
-  overflow-y: auto;
+  overflow: hidden;
 }
 
+/* The whole ticket (plus the status line) is scaled down to fit any screen, so every corner
+   stays visible and it is always centred. --fit is set from JS. */
 .ticket-wrap {
-  position: relative;
-  width: min(440px, 96vw);
-  max-height: 98svh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 10px 6px 14px;
+  --fit: 0.9;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 460px;
+  padding: 14px 0 6px;
+  transform: translate(-50%, -50%) scale(var(--fit));
+  transform-origin: center center;
   animation: ticket-in 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
 }
 
 @keyframes ticket-in {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.92);
+    transform: translate(-50%, calc(-50% + 30px)) scale(calc(var(--fit) * 0.92));
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: translate(-50%, -50%) scale(var(--fit));
   }
 }
 
@@ -256,11 +260,6 @@
   }
 }
 
-/* The status line (Write another) stays pinned to the bottom of the ticket area,
-   so it is visible right after tearing without scrolling. */
 .ticket-status {
-  position: sticky;
-  bottom: 0;
-  z-index: 40;
-  padding-bottom: 6px;
+  min-height: 130px;
 }
