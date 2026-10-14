@@ -108,6 +108,7 @@ export default function TearTicket({
   stubBackground = '',
   recenter = true,
   disabled = false,
+  canStart,
   ariaLabel = 'Tear off the stub',
   className = ''
 }) {
@@ -415,6 +416,7 @@ export default function TearTicket({
   const onStubDown = e => {
     const s = sim.current;
     if (disabled || used || e.button !== 0 || s.id !== null || s.phase === 'drop') return;
+    if (canStart && !canStart(e)) return;
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {}

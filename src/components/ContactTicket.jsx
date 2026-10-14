@@ -209,6 +209,9 @@ export default function ContactTicket({ onClose }) {
         </button>
 
         <TearTicket
+          canStart={(event) =>
+            emailValid && status !== "sending" && Boolean(event.target.closest && event.target.closest(".tear-handle"))
+          }
           orientation="vertical"
           width={460}
           height={735}
