@@ -32,7 +32,7 @@
 
 .ticket-body {
   height: 100%;
-  padding: 26px 30px 70px;
+  padding: 26px 30px 30px;
   color: #4a3426;
 }
 
@@ -254,4 +254,13 @@
   .tear-handle.ready {
     animation: none;
   }
+}
+
+/* The status line (Write another) stays pinned to the bottom of the ticket area,
+   so it is visible right after tearing without scrolling. */
+.ticket-status {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  padding-bottom: 6px;
 }

@@ -30,13 +30,13 @@
   border-radius: 22px;
   padding: 20px 24px 22px;
   box-shadow: 0 8px 0 #4a3426, 0 24px 40px rgba(0, 0, 0, 0.25);
-  animation: sheet-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  animation: sheet-in 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.15);
 }
 
 @keyframes sheet-in {
   from {
     opacity: 0;
-    transform: translateY(18px) scale(0.96);
+    transform: translateY(40px) scale(0.6) rotate(-2deg);
   }
   to {
     opacity: 1;

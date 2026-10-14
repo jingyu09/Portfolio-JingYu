@@ -16,6 +16,14 @@ body,
   margin: 0;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
 body {
   color: var(--ink);
   font-family: "Segoe UI", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
@@ -28,10 +36,17 @@ button {
   font-family: inherit;
 }
 
+.pill-btn {
+  white-space: nowrap;
+}
+
 .app {
   position: relative;
   z-index: 1;
-  min-height: 100svh;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  overflow-x: clip;
   display: flex;
   flex-direction: column;
 }
@@ -96,7 +111,7 @@ button {
 
 .stage {
   flex: 1;
-  min-height: 380px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -112,7 +127,7 @@ button {
 .dock {
   display: flex;
   justify-content: center;
-  padding: 26px 12px 18px;
+  padding: 22px 12px 6px;
 }
 
 .pixel-icon {
@@ -130,8 +145,13 @@ button {
     padding: 12px 14px 4px;
   }
 
+  .brand {
+    min-width: 0;
+  }
+
   .brand-name {
-    font-size: 24px;
+    font-size: 21px;
+    white-space: nowrap;
   }
 
   .progress-pill {
@@ -139,11 +159,21 @@ button {
   }
 
   .brand-role {
-    font-size: 16px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
   .pill-btn {
+    font-size: 15px;
+    padding: 7px 12px;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+
+  .stage-hint {
     font-size: 16px;
-    padding: 8px 14px;
+    margin-bottom: 8px;
   }
 }

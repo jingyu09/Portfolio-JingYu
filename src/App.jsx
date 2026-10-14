@@ -136,6 +136,7 @@ export default function App() {
             onChange={setIndex}
             viewed={viewed}
             onOpen={openSection}
+            openId={openId}
             active={!modalOpen}
           />
         </main>
