@@ -110,7 +110,7 @@
 }
 
 .solid-btn:hover {
-  box-shadow: 0 8px 24px rgba(255, 122, 61, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.22);
 }
 
 .solid-btn:active {

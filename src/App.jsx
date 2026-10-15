@@ -108,8 +108,12 @@ export default function App() {
       <div className="app">
         <header className="topbar">
           <div className="brand">
-            <span className="brand-name">{profile.name}</span>
-            <span className="brand-role">{profile.role}</span>
+            <span className="brand-name" aria-label={profile.name}>
+              {profile.name
+                .split(" ")
+                .map((word) => word[0])
+                .join("")}
+            </span>
           </div>
           <div className="topbar-actions">
             <span className="progress-pill" aria-live="polite">
@@ -125,6 +129,29 @@ export default function App() {
         </header>
 
         <main className="stage">
+          <section className="hero">
+            <h1 className="hero-title">
+              {profile.name.split(" ")[0]}
+              <br />
+              {profile.name.split(" ").slice(1).join(" ")}
+            </h1>
+            <p className="hero-role">{profile.role}</p>
+            <nav className="hero-index" aria-label="Sections">
+              <span className="hero-index-label">Index</span>
+              <ul>
+                {sections.map((section, i) => (
+                  <li key={section.id}>
+                    <button
+                      className={`${i === index ? "on" : ""}${viewed[section.id] ? " seen" : ""}`}
+                      onClick={() => setIndex(i)}
+                    >
+                      {section.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
           <p className="stage-hint">
             {ready
               ? "All five items collected. Time to craft!"

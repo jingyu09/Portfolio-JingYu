@@ -167,7 +167,7 @@ export default function ContactTicket({ onClose }) {
           value={rating}
           onChange={setRating}
           labels={RATING_LABELS}
-          activeColor="#ff7a3d"
+          activeColor="#14161c"
           idleColor="#cfcdc6"
           tipColor="#14161c"
           tipTextColor="#f3f3ef"

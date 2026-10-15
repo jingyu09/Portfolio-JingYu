@@ -1,13 +1,13 @@
 :root {
-  --bg: #0a0b10;
+  --bg: #07090d;
   --ink: #f2f2ee;
   --muted: rgba(242, 242, 238, 0.64);
   --line: rgba(255, 255, 255, 0.14);
-  --accent: #ff7a3d;
+  --accent: #ffffff;
   --glass: rgba(255, 255, 255, 0.07);
   --glass-strong: rgba(255, 255, 255, 0.12);
   --faint: rgba(242, 242, 238, 0.4);
-  --accent-ink: #160d07;
+  --accent-ink: #0b0c10;
   --font: "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
@@ -72,16 +72,15 @@ a {
   justify-content: space-between;
   gap: 12px;
   padding: 18px 28px 10px;
-  border-bottom: 1px solid var(--line);
-  margin: 0 0 4px;
+  margin: 0;
 }
 
 .brand-name {
   display: block;
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
 }
 
 .brand-role {
@@ -97,7 +96,7 @@ a {
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 26px;
 }
 
 .progress-pill {
@@ -110,27 +109,20 @@ a {
 
 .pill-btn {
   white-space: nowrap;
-  border: 1px solid var(--line);
-  background: var(--glass-strong);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  backdrop-filter: blur(16px) saturate(160%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border: 0;
+  background: none;
   color: var(--ink);
-  font-size: 16px;
+  opacity: 0.72;
+  font-size: 17px;
   font-weight: 500;
-  padding: 10px 18px;
-  border-radius: 12px;
+  letter-spacing: -0.01em;
+  padding: 8px 2px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.12s ease, border-color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .pill-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.pill-btn:active {
-  transform: translateY(1px);
+  opacity: 1;
 }
 
 .stage {
@@ -141,8 +133,9 @@ a {
 }
 
 .stage-hint {
-  margin: 8px 16px 0;
-  text-align: center;
+  display: none;
+  margin: 14px 28px 0;
+  text-align: left;
   font-family: var(--mono);
   font-size: 14px;
   letter-spacing: 0.1em;
@@ -150,10 +143,99 @@ a {
   color: var(--muted);
 }
 
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 4px 40px;
+  padding: 14px 28px 0;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(44px, min(7vw, 9.5svh), 92px);
+  line-height: 0.92;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.hero-role {
+  grid-column: 1;
+  margin: 10px 0 0;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+
+.hero-index {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  gap: 16px;
+  padding-top: 10px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.hero-index-label {
+  font-weight: 600;
+}
+
+.hero-index ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.hero-index button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.25;
+  color: rgba(242, 242, 238, 0.36);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.hero-index button.seen {
+  color: rgba(242, 242, 238, 0.62);
+}
+
+.hero-index button.on,
+.hero-index button:hover {
+  color: var(--ink);
+}
+
 .dock {
   display: flex;
   justify-content: center;
   padding: 22px 12px 6px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 6px 16px 0;
+  }
+
+  .hero-index {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: 46px;
+  }
+
+  .hero-role {
+    margin-top: 6px;
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -166,8 +248,7 @@ a {
   }
 
   .brand-name {
-    font-size: 21px;
-    white-space: nowrap;
+    font-size: 26px;
   }
 
   .progress-pill {
@@ -180,16 +261,14 @@ a {
   }
 
   .pill-btn {
-    font-size: 15px;
-    padding: 8px 13px;
+    font-size: 16px;
   }
 
   .topbar-actions {
-    gap: 8px;
+    gap: 20px;
   }
 
   .stage-hint {
-    font-size: 12px;
-    margin-bottom: 8px;
+    display: none;
   }
 }

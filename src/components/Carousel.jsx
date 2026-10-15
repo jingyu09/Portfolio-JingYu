@@ -30,28 +30,29 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
 
   const cardWidth = () => (cardRefs.current[0] ? cardRefs.current[0].offsetWidth : 340);
 
+  const step = () => {
+    const w = cardWidth();
+    return w + (w < 300 ? 14 : 30);
+  };
+
+  // Cards sit side by side with a gap (they never overlap), so every card can be real
+  // translucent glass. Only the cards near the centre get the live blur.
   const paint = () => {
-    const cardW = cardWidth();
-    const radius = cardW * 1.2;
-    const theta = 0.55;
+    const gap = step();
     cardRefs.current.forEach((el, i) => {
       if (!el) return;
       const d = wrap(i - s.pos + n / 2, n) - n / 2;
       const abs = Math.abs(d);
-      const a = Math.max(-1.6, Math.min(1.6, d * theta));
-      const x = Math.sin(a) * radius;
-      const z = (Math.cos(a) - 1) * radius * 0.9;
-      const rot = -a * 36;
-      // Only the two neighbours stay visible; cards further away fade out completely,
-      // so the text of overlapping cards never shows through each other.
-      const opacity = abs <= 1 ? 1 - abs * 0.12 : Math.max(0, 0.88 * (2 - abs));
-      el.style.transform = `translate(-50%, -50%) translate3d(${x}px, 0, ${z}px) rotateY(${rot}deg) scale(${
-        1 - Math.min(abs, 3) * 0.09
-      })`;
+      const c = Math.max(-2.2, Math.min(2.2, d));
+      const opacity = abs <= 1 ? 1 - abs * 0.5 : Math.max(0, 0.5 * (2 - abs));
+      el.style.transform = `translate(-50%, -50%) translate3d(${c * gap}px, 0, ${
+        -Math.min(abs, 2) * 90
+      }px) rotateY(${-Math.max(-1, Math.min(1, d)) * 12}deg) scale(${1 - Math.min(abs, 2) * 0.06})`;
       el.style.opacity = String(opacity);
       el.style.zIndex = String(100 - Math.round(abs * 10));
       el.style.pointerEvents = abs > 1.6 ? "none" : "auto";
       el.classList.toggle("is-center", abs < 0.5);
+      el.classList.toggle("is-near", abs < 1.6);
     });
   };
 
@@ -120,7 +121,7 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
     return () => window.removeEventListener("keydown", onKey);
   }, [active, index, n, onChange]);
 
-  const spacing = () => cardWidth() * 0.55;
+  const spacing = () => step();
 
   const onPointerDown = (event) => {
     if (event.button > 0) return;

@@ -40,11 +40,11 @@
 }
 
 .sm-layer-1 {
-  background: var(--accent);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .sm-layer-2 {
-  background: #2a3bd6;
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .sm-panel {

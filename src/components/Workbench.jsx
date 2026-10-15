@@ -15,7 +15,7 @@ export default function Workbench({
 }) {
   const count = sections.filter((s) => viewed[s.id]).length;
 
-  let caption = `Collected ${count} of ${sections.length}`;
+  let caption = `Collected ${count} of ${sections.length} · open every card`;
   if (ready) caption = "Everything collected";
   if (crafting) caption = "Assembling...";
   if (crafted) caption = "Ticket ready. Open it.";

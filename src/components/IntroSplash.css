@@ -9,8 +9,8 @@
   padding: 24px;
   text-align: left;
   cursor: pointer;
-  background: radial-gradient(60vmax 60vmax at 12% 0%, rgba(255, 106, 44, 0.5), rgba(255, 106, 44, 0) 70%),
-    radial-gradient(70vmax 70vmax at 100% 100%, rgba(58, 84, 255, 0.45), rgba(58, 84, 255, 0) 70%), #090a0f;
+  background: radial-gradient(60vmax 60vmax at 12% 0%, rgba(48, 108, 255, 0.5), rgba(48, 108, 255, 0) 70%),
+    radial-gradient(70vmax 70vmax at 100% 100%, rgba(0, 190, 200, 0.32), rgba(0, 190, 200, 0) 70%), #07090d;
   transition: opacity 0.5s ease;
 }
 
@@ -29,7 +29,7 @@
   font-size: 14px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted);
 }
 
 .intro-name {

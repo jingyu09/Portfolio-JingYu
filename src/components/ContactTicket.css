@@ -99,7 +99,7 @@
 }
 
 .contact-list a {
-  color: #c2410c;
+  color: #14161c;
   font-weight: 600;
   overflow-wrap: anywhere;
 }
@@ -164,8 +164,8 @@
 
 .stub-ui input:focus,
 .stub-ui textarea:focus {
-  outline: 3px solid rgba(255, 122, 61, 0.4);
-  border-color: var(--accent);
+  outline: 3px solid rgba(20, 22, 28, 0.16);
+  border-color: #14161c;
 }
 
 .stub-ui input.invalid {
@@ -208,9 +208,9 @@
 }
 
 .tear-handle.ready {
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  color: var(--accent-ink);
+  background: #14161c;
+  border: 1px solid #14161c;
+  color: #f3f3ef;
   cursor: grab;
   animation: handle-pulse 1.8s ease-in-out infinite;
 }
@@ -229,7 +229,7 @@
   align-self: center;
   background: none;
   border: none;
-  color: #c2410c;
+  color: #14161c;
   font-size: 15px;
   text-decoration: underline;
   cursor: pointer;

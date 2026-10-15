@@ -17,14 +17,14 @@
 .bg-glow.g1 {
   top: -38vmax;
   left: -26vmax;
-  background: radial-gradient(circle, rgba(255, 106, 44, 0.5) 0%, rgba(255, 106, 44, 0) 62%);
+  background: radial-gradient(circle, rgba(48, 108, 255, 0.5) 0%, rgba(48, 108, 255, 0) 62%);
   animation: glow-a 38s ease-in-out infinite alternate;
 }
 
 .bg-glow.g2 {
   bottom: -44vmax;
   right: -30vmax;
-  background: radial-gradient(circle, rgba(58, 84, 255, 0.55) 0%, rgba(58, 84, 255, 0) 62%);
+  background: radial-gradient(circle, rgba(0, 190, 200, 0.34) 0%, rgba(0, 190, 200, 0) 62%);
   animation: glow-b 46s ease-in-out infinite alternate;
 }
 
@@ -33,7 +33,7 @@
   left: 42%;
   width: 46vmax;
   height: 46vmax;
-  background: radial-gradient(circle, rgba(122, 76, 255, 0.28) 0%, rgba(122, 76, 255, 0) 62%);
+  background: radial-gradient(circle, rgba(110, 80, 255, 0.34) 0%, rgba(110, 80, 255, 0) 62%);
   animation: glow-c 52s ease-in-out infinite alternate;
 }
 
@@ -56,6 +56,7 @@
 }
 
 .bg-grid {
+  display: none;
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
