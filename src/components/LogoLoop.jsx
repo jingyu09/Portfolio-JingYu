@@ -6,8 +6,8 @@ export default function LogoLoop({ logos, speed = 38 }) {
   const row = (suffix, hidden) => (
     <ul className="loop-row" aria-hidden={hidden || undefined} key={suffix}>
       {logos.map((logo) => (
-        <li className="loop-item" key={`${suffix}-${logo.name}`}>
-          <svg viewBox="0 0 24 24" width="30" height="30" fill={`#${logo.icon.hex}`} aria-hidden="true">
+        <li className="loop-item" key={`${suffix}-${logo.name}`} style={{ "--brand": `#${logo.icon.hex}` }}>
+          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
             <path d={logo.icon.path} />
           </svg>
           <span>{logo.name}</span>

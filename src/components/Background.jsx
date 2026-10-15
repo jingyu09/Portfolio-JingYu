@@ -1,21 +1,14 @@
 import "./Background.css";
 
-// A soft, blurred scene: blue sky, drifting white clouds and green grassy hills.
-// Pure CSS, no image files.
+// A dark base with two slow, soft colour glows and a faint grid. Pure CSS, no images.
+// The frosted-glass panels on top pick the colour up through their blur.
 export default function Background() {
   return (
     <div className="bg" aria-hidden="true">
-      <div className="bg-art">
-        <div className="bg-sun" />
-        <div className="bg-cloud c1" />
-        <div className="bg-cloud c2" />
-        <div className="bg-cloud c3" />
-        <div className="bg-cloud c4" />
-        <div className="bg-hill h1" />
-        <div className="bg-hill h2" />
-        <div className="bg-hill h3" />
-      </div>
-      <div className="bg-veil" />
+      <div className="bg-glow g1" />
+      <div className="bg-glow g2" />
+      <div className="bg-glow g3" />
+      <div className="bg-grid" />
     </div>
   );
 }

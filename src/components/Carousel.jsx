@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
-import PixelIcon from "./PixelIcon";
 import "./Carousel.css";
 
 const wrap = (value, n) => ((value % n) + n) % n;
@@ -212,14 +211,17 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
                 }
               }}
             >
-              <div className="card-icon">
-                <PixelIcon name={item.icon} size={64} />
+              <div className="card-top">
+                <span className="card-num">{String(i + 1).padStart(2, "0")}</span>
+                <span className={`chip${seen ? " chip-seen" : ""}`}>{seen ? "Collected" : "New"}</span>
               </div>
               <h3>{item.title}</h3>
               <p>{item.teaser}</p>
               <div className="card-foot">
-                <span className={`chip${seen ? " chip-seen" : ""}`}>{seen ? "Collected ✓" : "New"}</span>
-                <span className="cta">{isCenter ? "Open ▸" : "View"}</span>
+                <span className="cta">{isCenter ? "Open" : "View"}</span>
+                <span className="cta-arrow" aria-hidden="true">
+                  →
+                </span>
               </div>
             </div>
           );

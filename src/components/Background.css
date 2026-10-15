@@ -3,135 +3,70 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #4aa8ee 0%, #86cdf8 38%, #c6ecff 60%, #e6f8ff 70%);
+  background: var(--bg);
 }
 
-.bg-art {
+.bg-glow {
   position: absolute;
-  inset: -4%;
-  filter: blur(5px);
-}
-
-.bg-sun {
-  position: absolute;
-  top: 7%;
-  right: 12%;
-  width: 150px;
-  height: 150px;
+  width: 78vmax;
+  height: 78vmax;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 249, 200, 0.95) 0%, rgba(255, 249, 200, 0) 70%);
+  will-change: transform;
 }
 
-.bg-cloud {
-  position: absolute;
-  width: 260px;
-  height: 78px;
-  border-radius: 999px;
-  background: #ffffff;
-  opacity: 0.92;
-  animation: bg-drift linear infinite;
+.bg-glow.g1 {
+  top: -38vmax;
+  left: -26vmax;
+  background: radial-gradient(circle, rgba(255, 106, 44, 0.5) 0%, rgba(255, 106, 44, 0) 62%);
+  animation: glow-a 38s ease-in-out infinite alternate;
 }
 
-.bg-cloud::before,
-.bg-cloud::after {
-  content: "";
-  position: absolute;
-  background: #ffffff;
-  border-radius: 50%;
+.bg-glow.g2 {
+  bottom: -44vmax;
+  right: -30vmax;
+  background: radial-gradient(circle, rgba(58, 84, 255, 0.55) 0%, rgba(58, 84, 255, 0) 62%);
+  animation: glow-b 46s ease-in-out infinite alternate;
 }
 
-.bg-cloud::before {
-  width: 112px;
-  height: 112px;
-  top: -50px;
-  left: 38px;
+.bg-glow.g3 {
+  top: 18%;
+  left: 42%;
+  width: 46vmax;
+  height: 46vmax;
+  background: radial-gradient(circle, rgba(122, 76, 255, 0.28) 0%, rgba(122, 76, 255, 0) 62%);
+  animation: glow-c 52s ease-in-out infinite alternate;
 }
 
-.bg-cloud::after {
-  width: 86px;
-  height: 86px;
-  top: -30px;
-  right: 40px;
-}
-
-.bg-cloud.c1 {
-  top: 11%;
-  left: -320px;
-  animation-duration: 95s;
-}
-
-.bg-cloud.c2 {
-  top: 26%;
-  left: -320px;
-  scale: 0.75;
-  animation-duration: 130s;
-  animation-delay: -55s;
-}
-
-.bg-cloud.c3 {
-  top: 6%;
-  left: -320px;
-  scale: 0.6;
-  animation-duration: 150s;
-  animation-delay: -100s;
-}
-
-.bg-cloud.c4 {
-  top: 36%;
-  left: -320px;
-  scale: 0.9;
-  opacity: 0.8;
-  animation-duration: 110s;
-  animation-delay: -20s;
-}
-
-@keyframes bg-drift {
-  from {
-    transform: translateX(0);
-  }
+@keyframes glow-a {
   to {
-    transform: translateX(calc(100vw + 720px));
+    transform: translate(22vmax, 14vmax) scale(1.15);
   }
 }
 
-.bg-hill {
-  position: absolute;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+@keyframes glow-b {
+  to {
+    transform: translate(-24vmax, -12vmax) scale(1.1);
+  }
 }
 
-.bg-hill.h1 {
-  left: -15%;
-  bottom: -20%;
-  width: 82%;
-  height: 46%;
-  background: radial-gradient(ellipse at 50% 0%, #93df7c, #5fb85a 72%);
+@keyframes glow-c {
+  to {
+    transform: translate(-20vmax, 16vmax) scale(0.85);
+  }
 }
 
-.bg-hill.h2 {
-  right: -20%;
-  bottom: -22%;
-  width: 88%;
-  height: 40%;
-  background: radial-gradient(ellipse at 50% 0%, #82d36c, #4fa84f 72%);
-}
-
-.bg-hill.h3 {
-  left: 6%;
-  bottom: -28%;
-  width: 92%;
-  height: 38%;
-  background: linear-gradient(#5ab552, #3f9440);
-}
-
-.bg-veil {
+.bg-grid {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 45%, rgba(40, 90, 60, 0.16) 100%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 85%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 85%);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bg-cloud {
+  .bg-glow {
     animation: none;
-    left: 12%;
   }
 }

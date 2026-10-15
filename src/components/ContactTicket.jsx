@@ -167,10 +167,10 @@ export default function ContactTicket({ onClose }) {
           value={rating}
           onChange={setRating}
           labels={RATING_LABELS}
-          activeColor="#f39c32"
-          idleColor="#dccdb6"
-          tipColor="#4a3426"
-          tipTextColor="#fff9ee"
+          activeColor="#ff7a3d"
+          idleColor="#cfcdc6"
+          tipColor="#14161c"
+          tipTextColor="#f3f3ef"
           size={26}
           lift={5}
           ariaLabel="Rate my portfolio"
@@ -214,7 +214,7 @@ export default function ContactTicket({ onClose }) {
           }
           orientation="vertical"
           width={460}
-          height={735}
+          height={780}
           stubSize={410}
           radius={18}
           holes={14}
@@ -224,17 +224,17 @@ export default function ContactTicket({ onClose }) {
           tiltMax={4}
           tiltReach={200}
           resistance={0.35}
-          background="#fff9ee"
-          stubBackground="#fff3dc"
-          color="#4a3426"
-          borderColor="rgba(74, 52, 38, 0.3)"
+          background="#f4f3ee"
+          stubBackground="#e9e8e1"
+          color="#14161c"
+          borderColor="rgba(20, 22, 28, 0.22)"
           torn={torn}
           onTear={submit}
           stub={stub}
           ariaLabel="Tear off the stub to send your message"
         >
           <div className="ticket-body">
-            <div className="ticket-kicker">Admit one · Let&apos;s talk</div>
+            <div className="ticket-kicker">Contact · Let&apos;s talk</div>
             <h3 className="ticket-name">{profile.name}</h3>
             <p className="ticket-role">{profile.role}</p>
             <ul className="contact-list">

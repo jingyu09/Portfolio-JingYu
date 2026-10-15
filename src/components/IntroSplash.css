@@ -7,9 +7,10 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
-  background: linear-gradient(180deg, #7cc4f2 0%, #a9dcfa 60%, #c9ecfb 100%);
+  background: radial-gradient(60vmax 60vmax at 12% 0%, rgba(255, 106, 44, 0.5), rgba(255, 106, 44, 0) 70%),
+    radial-gradient(70vmax 70vmax at 100% 100%, rgba(58, 84, 255, 0.45), rgba(58, 84, 255, 0) 70%), #090a0f;
   transition: opacity 0.5s ease;
 }
 
@@ -18,40 +19,47 @@
   pointer-events: none;
 }
 
+.intro-inner {
+  width: min(100%, 980px);
+}
+
 .intro-kicker {
-  margin: 0 0 14px;
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-  font-size: 18px;
-  letter-spacing: 0.2em;
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #b8651b;
-  font-weight: 700;
+  color: var(--accent);
 }
 
 .intro-name {
   margin: 0;
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-family: var(--mono);
+  font-weight: 700;
   font-size: clamp(20px, calc((100vw - 48px) / 9.8), 84px);
   white-space: nowrap;
   line-height: 1.1;
-  color: #4a3426;
-  text-shadow: 0 4px 0 rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .intro-role {
-  margin: 18px 0 0;
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-  font-size: clamp(13px, calc((100vw - 48px) / 13.5), 34px);
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: clamp(13px, calc((100vw - 48px) / 13.5), 30px);
   white-space: nowrap;
   letter-spacing: 0.12em;
-  font-weight: 700;
-  color: #d9822b;
+  color: var(--muted);
   min-height: 1.4em;
 }
 
 .intro-skip {
   margin: 44px 0 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(74, 52, 38, 0.65);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
 }

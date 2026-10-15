@@ -1,23 +1,25 @@
 .blocks {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .b-text {
   margin: 0;
   line-height: 1.65;
+  color: rgba(243, 243, 239, 0.88);
 }
 
 .b-list {
   margin: 0;
   padding-left: 1.2em;
   display: grid;
-  gap: 8px;
+  gap: 10px;
   line-height: 1.55;
+  color: rgba(243, 243, 239, 0.88);
 }
 
 .b-list li::marker {
-  color: #f39c32;
+  color: var(--accent);
 }
 
 .b-facts {
@@ -28,34 +30,38 @@
 }
 
 .fact {
-  background: rgba(243, 156, 50, 0.12);
-  border-radius: 12px;
-  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
 }
 
 .fact dt {
-  font-size: 15px;
+  font-family: var(--mono);
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.65;
+  letter-spacing: 0.12em;
+  color: var(--muted);
 }
 
 .fact dd {
-  margin: 4px 0 0;
-  font-weight: 600;
+  margin: 6px 0 0;
+  font-weight: 500;
 }
 
 .b-tags {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .tag-group h4 {
-  margin: 0 0 6px;
-  font-size: 16px;
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.65;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  color: var(--muted);
 }
 
 .tag-row {
@@ -65,23 +71,22 @@
 }
 
 .tag {
-  background: #fff;
-  border: 2px solid #4a3426;
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow: 0 2px 0 #4a3426;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 5px 12px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .b-timeline {
   display: grid;
-  gap: 18px;
+  gap: 22px;
 }
 
 .t-item {
-  border-left: 4px solid #f39c32;
-  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
 }
 
 .t-item header {
@@ -95,18 +100,21 @@
 .t-item h4 {
   margin: 0;
   font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .t-period {
-  font-size: 17px;
-  opacity: 0.7;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
   white-space: nowrap;
 }
 
 .t-org {
   margin: 2px 0 8px;
-  font-weight: 600;
-  color: #b8651b;
+  font-weight: 500;
+  color: var(--accent);
 }
 
 .b-links {
@@ -118,8 +126,8 @@
 }
 
 .b-links a {
-  color: #b8651b;
-  font-weight: 700;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 @media (max-width: 560px) {
