@@ -1,0 +1,81 @@
+.slist {
+  list-style: none;
+  margin: 10px 16px 0;
+  padding: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.07));
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 26px;
+  -webkit-backdrop-filter: blur(30px) saturate(170%);
+  backdrop-filter: blur(30px) saturate(170%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 24px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.slist li + li {
+  border-top: 1px solid var(--line);
+}
+
+.srow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 34px 1fr 30px;
+  align-items: center;
+  gap: 10px;
+  min-height: clamp(60px, calc((100svh - 470px) / 5), 84px);
+  padding: 8px 16px 8px 18px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.srow:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.srow-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+}
+
+.srow-main {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.srow-title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.srow-teaser {
+  font-size: 15px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.srow-state {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.srow.is-seen .srow-state {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #14110e;
+}

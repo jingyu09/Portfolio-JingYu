@@ -3,6 +3,7 @@ import "./App.css";
 import { profile, sections } from "./data/portfolio";
 import Background from "./components/Background";
 import Carousel from "./components/Carousel";
+import SectionList from "./components/SectionList";
 import Workbench from "./components/Workbench";
 import SectionModal from "./components/SectionModal";
 import QuickRead from "./components/QuickRead";
@@ -14,6 +15,19 @@ import { logos } from "./data/logos";
 
 const STORAGE_KEY = "jingyu-portfolio-viewed";
 const INTRO_KEY = "jingyu-portfolio-intro";
+
+// True on phone-sized screens, where the page shows a list instead of the carousel.
+function useCompact() {
+  const query = "(max-width: 640px)";
+  const [compact, setCompact] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = () => setCompact(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return compact;
+}
 
 function introAlreadySeen() {
   try {
@@ -33,6 +47,7 @@ function loadViewed() {
 }
 
 export default function App() {
+  const compact = useCompact();
   const [index, setIndex] = useState(0);
   const [viewed, setViewed] = useState(loadViewed);
   const [openId, setOpenId] = useState(null);
@@ -157,15 +172,19 @@ export default function App() {
               ? "All five items collected. Time to craft!"
               : "Open every card to collect all five items for the workbench."}
           </p>
-          <Carousel
-            items={sections}
-            index={index}
-            onChange={setIndex}
-            viewed={viewed}
-            onOpen={openSection}
-            openId={openId}
-            active={!modalOpen}
-          />
+          {compact ? (
+            <SectionList items={sections} viewed={viewed} onOpen={openSection} />
+          ) : (
+            <Carousel
+              items={sections}
+              index={index}
+              onChange={setIndex}
+              viewed={viewed}
+              onOpen={openSection}
+              openId={openId}
+              active={!modalOpen}
+            />
+          )}
         </main>
 
         <footer className="dock">

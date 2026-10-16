@@ -32,41 +32,51 @@
   top: 12px;
   right: 12px;
   z-index: 5;
-  background: #14161c;
-  border-color: #14161c;
-  color: #f3f3ef;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--ink);
 }
 
 .ticket-close:hover {
-  background: #2a2d38;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* The ticket itself is light "paper" so the text stays easy to read on the dark glass scene. */
+/* The ticket is frosted glass like everything else: the scene shows through a heavy blur. */
+.ticket-wrap .tear-ticket__paper {
+  -webkit-backdrop-filter: blur(34px) saturate(175%) brightness(0.82);
+  backdrop-filter: blur(34px) saturate(175%) brightness(0.82);
+}
+
+.ticket-wrap .tear-ticket__fibres {
+  display: none;
+}
+
 .ticket-body {
   height: 100%;
-  padding: 26px 30px 30px;
-  color: #14161c;
+  padding: 28px 32px 30px;
+  color: var(--ink);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
 .ticket-kicker {
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(20, 22, 28, 0.55);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
 
 .ticket-name {
-  margin: 10px 0 2px;
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  margin: 8px 0 2px;
+  font-family: var(--serif);
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .ticket-role {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   font-size: 18px;
-  color: rgba(20, 22, 28, 0.65);
+  color: var(--muted);
 }
 
 .contact-list {
@@ -76,7 +86,7 @@
   display: grid;
   gap: 0;
   font-size: 18px;
-  border-top: 1px solid rgba(20, 22, 28, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .contact-list li {
@@ -85,77 +95,81 @@
   gap: 10px;
   flex-wrap: wrap;
   padding: 9px 0;
-  border-bottom: 1px solid rgba(20, 22, 28, 0.16);
+  border-bottom: 1px solid var(--line);
 }
 
 .c-label {
   width: 78px;
   flex: none;
-  font-family: var(--mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(20, 22, 28, 0.55);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
 }
 
 .contact-list a {
-  color: #14161c;
-  font-weight: 600;
+  color: var(--ink);
+  font-weight: 500;
   overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 4px;
 }
 
 .copy-btn {
-  border: 1px solid rgba(20, 22, 28, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   background: transparent;
-  color: #14161c;
-  border-radius: 8px;
-  padding: 2px 10px;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 2px 12px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 }
 
 .copy-btn:hover {
-  background: rgba(20, 22, 28, 0.08);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .stub-ui {
-  padding: 20px 28px 12px;
+  padding: 20px 30px 12px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   cursor: default;
-  color: #14161c;
+  color: var(--ink);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
 .f-label {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .f-label span {
   font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
   opacity: 0.6;
 }
 
 .stub-ui input[type="email"],
 .stub-ui textarea {
   width: 100%;
-  border: 1px solid rgba(20, 22, 28, 0.28);
-  border-radius: 10px;
-  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  padding: 10px 13px;
   font: inherit;
   font-size: 18px;
-  background: #fff;
-  color: #14161c;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--ink);
+  text-shadow: none;
   touch-action: manipulation;
   user-select: text;
   -webkit-user-select: text;
+}
+
+.stub-ui input::placeholder,
+.stub-ui textarea::placeholder {
+  color: var(--faint);
 }
 
 .stub-ui textarea {
@@ -164,12 +178,12 @@
 
 .stub-ui input:focus,
 .stub-ui textarea:focus {
-  outline: 3px solid rgba(20, 22, 28, 0.16);
-  border-color: #14161c;
+  outline: 3px solid rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .stub-ui input.invalid {
-  border-color: #d9534f;
+  border-color: #ff9a8f;
 }
 
 .rate-row {
@@ -197,20 +211,21 @@
   text-align: center;
   font-size: 16px;
   font-weight: 600;
-  padding: 11px 8px;
-  border-radius: 12px;
-  border: 1px dashed rgba(20, 22, 28, 0.4);
-  background: rgba(20, 22, 28, 0.06);
-  color: rgba(20, 22, 28, 0.55);
+  padding: 12px 8px;
+  border-radius: 999px;
+  border: 1px dashed rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--faint);
+  text-shadow: none;
   cursor: not-allowed;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .tear-handle.ready {
-  background: #14161c;
-  border: 1px solid #14161c;
-  color: #f3f3ef;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: #17120e;
   cursor: grab;
   animation: handle-pulse 1.8s ease-in-out infinite;
 }
@@ -229,9 +244,10 @@
   align-self: center;
   background: none;
   border: none;
-  color: #14161c;
+  color: var(--ink);
   font-size: 15px;
   text-decoration: underline;
+  text-underline-offset: 4px;
   cursor: pointer;
   padding: 2px 4px;
 }

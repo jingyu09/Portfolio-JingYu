@@ -27,7 +27,8 @@ export default function QuickRead({ onClose }) {
       <div className="sheet quick" role="dialog" aria-modal="true" aria-label="Quick read">
         <header className="sheet-head">
           <h2>
-            {profile.name} <span className="quick-role">· {profile.role}</span>
+            {profile.name}
+            <span className="quick-role">{profile.role}</span>
           </h2>
           <button ref={closeRef} className="icon-close" onClick={onClose} aria-label="Close">
             ×

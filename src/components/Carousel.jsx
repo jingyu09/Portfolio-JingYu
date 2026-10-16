@@ -58,10 +58,12 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
 
   const sync = () => {
     const idx = wrap(Math.round(s.pos), n);
-    if (idx !== s.lastIdx) {
-      s.lastIdx = idx;
-      onChangeRef.current(idx);
-    }
+    if (idx === s.lastIdx) return;
+    // While gliding to a target (not dragging), only report once we arrive. Reporting the cards
+    // we merely pass made the glide re-aim at them, so a jump to "Education" could end on "Skills".
+    if (!s.dragging && idx !== wrap(Math.round(s.target), n)) return;
+    s.lastIdx = idx;
+    onChangeRef.current(idx);
   };
 
   const tick = (now) => {

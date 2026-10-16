@@ -1,12 +1,12 @@
 :root {
   --bg: #0b0a09;
-  --ink: #f2f2ee;
-  --muted: rgba(242, 242, 238, 0.64);
+  --ink: #f7f3ec;
+  --muted: rgba(247, 243, 236, 0.68);
   --line: rgba(255, 255, 255, 0.14);
   --accent: #ffffff;
   --glass: rgba(255, 255, 255, 0.07);
   --glass-strong: rgba(255, 255, 255, 0.12);
-  --faint: rgba(242, 242, 238, 0.4);
+  --faint: rgba(247, 243, 236, 0.44);
   --accent-ink: #0b0c10;
   --font: "Inter Variable", "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   --display: "Inter Tight Variable", "Inter Variable", "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -43,6 +43,32 @@ body {
 
 button {
   font-family: inherit;
+}
+
+/* Slim, translucent scrollbars instead of the bright default ones. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 a {
@@ -239,7 +265,7 @@ a {
   }
 
   .hero-title {
-    font-size: 58px;
+    font-size: 52px;
   }
 
   .hero-role {
