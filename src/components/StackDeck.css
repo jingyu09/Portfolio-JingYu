@@ -1,0 +1,155 @@
+.deckwrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  --deck-h: clamp(220px, calc(100svh - 500px), 330px);
+}
+
+.deck {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0 16px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.deck-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - var(--deck-h) / 2 - 16px);
+  width: min(100%, 340px);
+  height: var(--deck-h);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 18px 20px 16px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 28px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 26px 60px rgba(0, 0, 0, 0.38);
+  color: var(--ink);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  will-change: transform, opacity;
+}
+
+.deck-card.has-blur {
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+}
+
+.deck-card.is-top {
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+.deck-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.deck-num {
+  font-family: var(--mono);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+}
+
+.deck-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.deck-chip::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+}
+
+.deck-chip.is-seen {
+  color: var(--ink);
+}
+
+.deck-chip.is-seen::before {
+  background: var(--ink);
+}
+
+.deck-card h3 {
+  margin: 8px 0 0;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.deck-card p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.deck-foot {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.deck-card.is-top .deck-foot {
+  color: var(--ink);
+}
+
+.deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 4px 0 2px;
+}
+
+.deck-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--ink);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.deck-btn:active {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.deck-count {
+  min-width: 70px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}

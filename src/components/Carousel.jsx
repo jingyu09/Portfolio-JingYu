@@ -51,8 +51,7 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
       el.style.opacity = String(opacity);
       el.style.zIndex = String(100 - Math.round(abs * 10));
       el.style.pointerEvents = abs > 1.6 ? "none" : "auto";
-      el.classList.toggle("is-center", abs < 0.5);
-      el.classList.toggle("is-near", abs < 1.6);
+      el.style.visibility = abs > 1.8 ? "hidden" : "visible";
     });
   };
 
@@ -202,7 +201,7 @@ export default function Carousel({ items, index, onChange, viewed, onOpen, openI
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className={`card${seen ? " is-seen" : ""}${openId === item.id ? " is-open" : ""}`}
+              className={`card${isCenter ? " is-center" : ""}${seen ? " is-seen" : ""}${openId === item.id ? " is-open" : ""}`}
               role="button"
               tabIndex={isCenter ? 0 : -1}
               aria-label={isCenter ? `Open ${item.title}` : `Show ${item.title}`}

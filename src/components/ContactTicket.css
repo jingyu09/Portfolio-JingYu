@@ -27,66 +27,78 @@
   }
 }
 
+.ticket-wrap {
+  --t-ink: #1c1915;
+  --t-mute: rgba(28, 25, 21, 0.64);
+  --t-faint: rgba(28, 25, 21, 0.46);
+  --t-line: rgba(28, 25, 21, 0.2);
+}
+
 .ticket-close {
   position: absolute;
   top: 12px;
   right: 12px;
   z-index: 5;
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.34);
-  color: var(--ink);
+  background: var(--t-ink);
+  border-color: var(--t-ink);
+  color: #e7dfcf;
 }
 
 .ticket-close:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #3a342c;
 }
 
-/* The ticket is frosted glass like everything else: the scene shows through a heavy blur. */
-.ticket-wrap .tear-ticket__paper {
-  -webkit-backdrop-filter: blur(34px) saturate(175%) brightness(0.82);
-  backdrop-filter: blur(34px) saturate(175%) brightness(0.82);
-}
-
-.ticket-wrap .tear-ticket__fibres {
-  display: none;
-}
-
+/* A warm paper ticket: muted cream rather than bright white, with a printed inner border. */
 .ticket-body {
+  position: relative;
   height: 100%;
-  padding: 28px 32px 30px;
-  color: var(--ink);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  padding: 26px 34px 24px;
+  color: var(--t-ink);
 }
 
-.ticket-kicker {
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
+.ticket-body::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed var(--t-line);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 44px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--t-ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 .ticket-name {
-  margin: 8px 0 2px;
+  margin: 14px 0 0;
   font-family: var(--serif);
-  font-size: 50px;
+  font-size: 52px;
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .ticket-role {
-  margin: 0 0 20px;
+  margin: 4px 0 14px;
   font-size: 18px;
-  color: var(--muted);
+  color: var(--t-mute);
 }
 
 .contact-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 0;
   font-size: 18px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--t-line);
 }
 
 .contact-list li {
@@ -94,56 +106,62 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--t-line);
 }
 
 .c-label {
   width: 78px;
   flex: none;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--t-faint);
 }
 
 .contact-list a {
-  color: var(--ink);
+  color: var(--t-ink);
   font-weight: 500;
   overflow-wrap: anywhere;
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-decoration-color: rgba(28, 25, 21, 0.4);
   text-underline-offset: 4px;
 }
 
 .copy-btn {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(28, 25, 21, 0.45);
   background: transparent;
-  color: var(--ink);
+  color: var(--t-ink);
   border-radius: 999px;
-  padding: 2px 12px;
+  padding: 1px 12px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 }
 
 .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(28, 25, 21, 0.08);
+}
+
+.ticket-barcode {
+  height: 30px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, #1c1915 0px 2px, transparent 2px 4px, #1c1915 4px 6px, transparent 6px 8px, #1c1915 8px 9px, transparent 9px 14px, #1c1915 14px 15px, transparent 15px 18px, #1c1915 18px 21px, transparent 21px 23px, #1c1915 23px 26px, transparent 26px 28px, #1c1915 28px 29px, transparent 29px 31px, #1c1915 31px 33px, transparent 33px 37px, #1c1915 37px 38px, transparent 38px 40px, #1c1915 40px 41px, transparent 41px 46px, #1c1915 46px 48px, transparent 48px 50px, #1c1915 50px 53px, transparent 53px 55px, #1c1915 55px 56px, transparent 56px 61px, #1c1915 61px 62px, transparent 62px 67px, #1c1915 67px 70px, transparent 70px 74px, #1c1915 74px 75px, transparent 75px 77px, #1c1915 77px 78px, transparent 78px 83px, #1c1915 83px 84px, transparent 84px 87px, #1c1915 87px 89px, transparent 89px 91px, #1c1915 91px 94px, transparent 94px 96px, #1c1915 96px 99px, transparent 99px 102px, #1c1915 102px 105px, transparent 105px 107px, #1c1915 107px 108px, transparent 108px 113px, #1c1915 113px 116px, transparent 116px 118px, #1c1915 118px 120px, transparent 120px 122px, #1c1915 122px 125px, transparent 125px 127px, #1c1915 127px 130px, transparent 130px 132px, #1c1915 132px 135px, transparent 135px 137px, #1c1915 137px 139px, transparent 139px 144px, #1c1915 144px 146px, transparent 146px 149px, #1c1915 149px 151px, transparent 151px 156px, #1c1915 156px 158px, transparent 158px 161px, #1c1915 161px 163px, transparent 163px 165px, #1c1915 165px 166px, transparent 166px 168px, #1c1915 168px 169px, transparent 169px 174px, #1c1915 174px 176px, transparent 176px 181px, #1c1915 181px 183px, transparent 183px 186px, #1c1915 186px 190px, transparent 190px 194px, #1c1915 194px 196px, transparent 196px 201px, #1c1915 201px 202px, transparent 202px 204px, #1c1915 204px 207px, transparent 207px 211px, #1c1915 211px 212px, transparent 212px 215px, #1c1915 215px 216px, transparent 216px 220px, #1c1915 220px 222px, transparent 222px 224px, #1c1915 224px 228px, transparent 228px 230px, #1c1915 230px 233px, transparent 233px 238px, #1c1915 238px 240px, transparent 240px 243px, #1c1915 243px 247px, transparent 247px 250px, #1c1915 250px 253px, transparent 253px 257px, #1c1915 257px 260px, transparent 260px 264px, #1c1915 264px 265px, transparent 265px 267px, #1c1915 267px 269px, transparent 269px 273px, #1c1915 273px 277px, transparent 277px 279px, #1c1915 279px 280px, transparent 280px 283px, #1c1915 283px 287px, transparent 287px 292px, #1c1915 292px 296px, transparent 296px 300px, #1c1915 300px 302px, transparent 302px 306px, #1c1915 306px 310px, transparent 310px 313px, #1c1915 313px 314px, transparent 314px 318px, #1c1915 318px 320px, transparent 320px 322px, #1c1915 322px 325px, transparent 325px 327px, #1c1915 327px 329px, transparent 329px 331px, #1c1915 331px 332px, transparent 332px 335px, #1c1915 335px 336px, transparent 336px 338px, #1c1915 338px 340px, transparent 340px 344px, #1c1915 344px 346px, transparent 346px 348px, #1c1915 348px 349px, transparent 349px 353px, #1c1915 353px 355px, transparent 355px 360px, #1c1915 360px 362px, transparent 362px 364px, #1c1915 364px 366px, transparent 366px 371px, #1c1915 371px 373px, transparent 373px 377px, #1c1915 377px 379px, transparent 379px 383px, #1c1915 383px 384px, transparent 384px 386px, #1c1915 386px 387px, transparent 387px 389px, #1c1915 389px 390px, transparent 390px 392px, #1c1915 392px 396px);
 }
 
 .stub-ui {
-  padding: 20px 30px 12px;
+  padding: 20px 32px 12px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   cursor: default;
-  color: var(--ink);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  color: var(--t-ink);
 }
 
 .f-label {
   font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 .f-label span {
@@ -154,14 +172,13 @@
 .stub-ui input[type="email"],
 .stub-ui textarea {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 14px;
+  border: 1px solid rgba(28, 25, 21, 0.32);
+  border-radius: 12px;
   padding: 10px 13px;
   font: inherit;
   font-size: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--ink);
-  text-shadow: none;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--t-ink);
   touch-action: manipulation;
   user-select: text;
   -webkit-user-select: text;
@@ -169,7 +186,7 @@
 
 .stub-ui input::placeholder,
 .stub-ui textarea::placeholder {
-  color: var(--faint);
+  color: var(--t-faint);
 }
 
 .stub-ui textarea {
@@ -178,12 +195,12 @@
 
 .stub-ui input:focus,
 .stub-ui textarea:focus {
-  outline: 3px solid rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.7);
+  outline: 3px solid rgba(28, 25, 21, 0.14);
+  border-color: var(--t-ink);
 }
 
 .stub-ui input.invalid {
-  border-color: #ff9a8f;
+  border-color: #a8392b;
 }
 
 .rate-row {
@@ -213,19 +230,18 @@
   font-weight: 600;
   padding: 12px 8px;
   border-radius: 999px;
-  border: 1px dashed rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--faint);
-  text-shadow: none;
+  border: 1px dashed rgba(28, 25, 21, 0.45);
+  background: rgba(28, 25, 21, 0.04);
+  color: var(--t-faint);
   cursor: not-allowed;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .tear-handle.ready {
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  color: #17120e;
+  background: var(--t-ink);
+  border: 1px solid var(--t-ink);
+  color: #e7dfcf;
   cursor: grab;
   animation: handle-pulse 1.8s ease-in-out infinite;
 }
@@ -244,7 +260,7 @@
   align-self: center;
   background: none;
   border: none;
-  color: var(--ink);
+  color: var(--t-ink);
   font-size: 15px;
   text-decoration: underline;
   text-underline-offset: 4px;

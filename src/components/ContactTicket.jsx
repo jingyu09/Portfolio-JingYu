@@ -167,10 +167,10 @@ export default function ContactTicket({ onClose }) {
           value={rating}
           onChange={setRating}
           labels={RATING_LABELS}
-          activeColor="#f7f3ec"
-          idleColor="rgba(247, 243, 236, 0.28)"
-          tipColor="#f7f3ec"
-          tipTextColor="#17120e"
+          activeColor="#1c1915"
+          idleColor="rgba(28, 25, 21, 0.2)"
+          tipColor="#1c1915"
+          tipTextColor="#e7dfcf"
           size={26}
           lift={5}
           ariaLabel="Rate my portfolio"
@@ -214,7 +214,7 @@ export default function ContactTicket({ onClose }) {
           }
           orientation="vertical"
           width={460}
-          height={780}
+          height={800}
           stubSize={410}
           radius={18}
           holes={14}
@@ -224,17 +224,20 @@ export default function ContactTicket({ onClose }) {
           tiltMax={4}
           tiltReach={200}
           resistance={0.35}
-          background="rgba(255, 255, 255, 0.14)"
-          stubBackground="rgba(255, 255, 255, 0.09)"
-          color="#f7f3ec"
-          borderColor="rgba(255, 255, 255, 0.36)"
+          background="#e7dfcf"
+          stubBackground="#ddd4c1"
+          color="#1c1915"
+          borderColor="rgba(28, 25, 21, 0.3)"
           torn={torn}
           onTear={submit}
           stub={stub}
           ariaLabel="Tear off the stub to send your message"
         >
           <div className="ticket-body">
-            <div className="ticket-kicker">Contact · Let&apos;s talk</div>
+            <div className="ticket-top">
+              <span>Admit one</span>
+              <span>No. 0001</span>
+            </div>
             <h3 className="ticket-name">{profile.name}</h3>
             <p className="ticket-role">{profile.role}</p>
             <ul className="contact-list">
@@ -270,6 +273,7 @@ export default function ContactTicket({ onClose }) {
                 </a>
               </li>
             </ul>
+            <div className="ticket-barcode" aria-hidden="true" />
           </div>
         </TearTicket>
 

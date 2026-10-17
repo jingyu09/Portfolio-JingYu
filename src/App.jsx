@@ -3,7 +3,7 @@ import "./App.css";
 import { profile, sections } from "./data/portfolio";
 import Background from "./components/Background";
 import Carousel from "./components/Carousel";
-import SectionList from "./components/SectionList";
+import StackDeck from "./components/StackDeck";
 import Workbench from "./components/Workbench";
 import SectionModal from "./components/SectionModal";
 import QuickRead from "./components/QuickRead";
@@ -173,7 +173,7 @@ export default function App() {
               : "Open every card to collect all five items for the workbench."}
           </p>
           {compact ? (
-            <SectionList items={sections} viewed={viewed} onOpen={openSection} />
+            <StackDeck items={sections} index={index} onChange={setIndex} viewed={viewed} onOpen={openSection} />
           ) : (
             <Carousel
               items={sections}

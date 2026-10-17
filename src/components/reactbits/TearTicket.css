@@ -18,7 +18,6 @@
   position: relative;
   width: min(var(--tt-w), 100%);
   color: var(--tt-ink);
-  overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
