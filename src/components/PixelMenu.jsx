@@ -3,7 +3,7 @@ import { profile, sections } from "../data/portfolio";
 import "./PixelMenu.css";
 
 // Slide-in menu: two coloured layers sweep in first, then the panel, then the items stagger up.
-export default function PixelMenu({ open, onClose, onPickSection, onQuickRead, onTicket, crafted }) {
+export default function PixelMenu({ open, onClose, onPickSection, onQuickRead, onTicket, crafted, showQuick = true }) {
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -37,12 +37,14 @@ export default function PixelMenu({ open, onClose, onPickSection, onQuickRead, o
               </button>
             </li>
           ))}
+          {showQuick ? (
           <li style={step()}>
             <button className="sm-item sm-item-alt" onClick={onQuickRead}>
               <span className="sm-num">+</span>
               Quick read
             </button>
           </li>
+          ) : null}
           <li style={step()}>
             <button className="sm-item sm-item-alt" onClick={onTicket} disabled={!crafted}>
               <span className="sm-num">@</span>

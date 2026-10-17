@@ -1,0 +1,153 @@
+.flow {
+  padding: 4px 0 48px;
+}
+
+.flow-section {
+  margin: 0 16px 18px;
+  padding: 24px 20px 22px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.06)), rgba(20, 15, 11, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 28px;
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(22px) saturate(165%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), 0 24px 60px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  scroll-margin-top: 76px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.flow-section.in {
+  opacity: 1;
+  transform: none;
+}
+
+.flow-head {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.flow-num {
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.flow-head h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.flow-logos {
+  margin: 6px 0 22px;
+}
+
+.flow-ticket {
+  text-align: left;
+}
+
+.flow-ticket-kicker {
+  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.flow-ticket h2 {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: 54px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.flow-cells {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.flow-cell {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--faint);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+.flow-cell.lit {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+}
+
+.flow-ticket.crafting .flow-cell {
+  animation: flow-merge 1.3s ease-in forwards;
+}
+
+@keyframes flow-merge {
+  to {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+.flow-unlock {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 20px;
+  background: var(--ink);
+  color: #17120e;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.18);
+  animation: flow-pulse 2.2s ease-in-out infinite;
+}
+
+.flow-unlock:disabled {
+  opacity: 0.7;
+  animation: none;
+}
+
+@keyframes flow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 28px rgba(255, 255, 255, 0.14);
+  }
+  50% {
+    box-shadow: 0 10px 38px rgba(255, 255, 255, 0.32);
+  }
+}
+
+.flow-ticket-note {
+  margin: 14px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .flow-unlock {
+    animation: none;
+  }
+}

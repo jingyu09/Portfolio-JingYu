@@ -308,3 +308,28 @@ a {
     display: none;
   }
 }
+
+/* Phone layout: a normal scrolling page with a frosted sticky header. */
+.app--flow {
+  height: auto;
+  min-height: 100svh;
+}
+
+.app--flow .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11, 10, 9, 0.36);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--line);
+}
+
+.app--flow .stage {
+  flex: none;
+  min-height: 0;
+}
+
+.app--flow .hero {
+  padding-bottom: 22px;
+}

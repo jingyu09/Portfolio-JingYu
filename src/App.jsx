@@ -3,7 +3,7 @@ import "./App.css";
 import { profile, sections } from "./data/portfolio";
 import Background from "./components/Background";
 import Carousel from "./components/Carousel";
-import StackDeck from "./components/StackDeck";
+import FlowPage from "./components/FlowPage";
 import Workbench from "./components/Workbench";
 import SectionModal from "./components/SectionModal";
 import QuickRead from "./components/QuickRead";
@@ -16,7 +16,7 @@ import { logos } from "./data/logos";
 const STORAGE_KEY = "jingyu-portfolio-viewed";
 const INTRO_KEY = "jingyu-portfolio-intro";
 
-// True on phone-sized screens, where the page shows a list instead of the carousel.
+// True on phone-sized screens, where the page is one long scroll instead of the carousel.
 function useCompact() {
   const query = "(max-width: 640px)";
   const [compact, setCompact] = useState(() => window.matchMedia(query).matches);
@@ -88,6 +88,11 @@ export default function App() {
     setViewed((previous) => (previous[id] ? previous : { ...previous, [id]: true }));
   }, []);
 
+  // Phone layout: scrolling a section into view is what counts as "seen".
+  const markSeen = useCallback((id) => {
+    setViewed((previous) => (previous[id] ? previous : { ...previous, [id]: true }));
+  }, []);
+
   // The workbench slot pops once the card is closed, so the visitor actually sees it.
   const closeSection = useCallback(() => {
     setPopId(openId);
@@ -120,7 +125,7 @@ export default function App() {
   return (
     <>
       <Background />
-      <div className="app">
+      <div className={`app${compact ? " app--flow" : ""}`}>
         <header className="topbar">
           <div className="brand">
             <span className="brand-name" aria-label={profile.name}>
@@ -134,9 +139,11 @@ export default function App() {
             <span className="progress-pill" aria-live="polite">
               Workbench {count}/{sections.length}
             </span>
-            <button className="pill-btn" onClick={() => setQuickOpen(true)}>
-              Quick read
-            </button>
+            {compact ? null : (
+              <button className="pill-btn" onClick={() => setQuickOpen(true)}>
+                Quick read
+              </button>
+            )}
             <button className="pill-btn" onClick={() => setMenuOpen(true)} aria-haspopup="dialog">
               Menu
             </button>
@@ -167,49 +174,72 @@ export default function App() {
               </ul>
             </nav>
           </section>
-          <p className="stage-hint">
-            {ready
-              ? "All five items collected. Time to craft!"
-              : "Open every card to collect all five items for the workbench."}
-          </p>
           {compact ? (
-            <StackDeck items={sections} index={index} onChange={setIndex} viewed={viewed} onOpen={openSection} />
-          ) : (
-            <Carousel
-              items={sections}
-              index={index}
-              onChange={setIndex}
+            <FlowPage
+              sections={sections}
               viewed={viewed}
-              onOpen={openSection}
-              openId={openId}
-              active={!modalOpen}
+              onSeen={markSeen}
+              crafting={crafting}
+              crafted={crafted}
+              onCraft={craft}
+              onOpenTicket={() => setTicketOpen(true)}
             />
+          ) : (
+            <>
+              <p className="stage-hint">
+                {ready
+                  ? "All five items collected. Time to craft!"
+                  : "Open every card to collect all five items for the workbench."}
+              </p>
+              <Carousel
+                items={sections}
+                index={index}
+                onChange={setIndex}
+                viewed={viewed}
+                onOpen={openSection}
+                openId={openId}
+                active={!modalOpen}
+              />
+            </>
           )}
         </main>
 
-        <footer className="dock">
-          <Workbench
-            sections={sections}
-            viewed={viewed}
-            hintId={sections[index].id}
-            popId={popId}
-            ready={ready}
-            crafting={crafting}
-            crafted={crafted}
-            onCraft={craft}
-            onOpenTicket={() => setTicketOpen(true)}
-          />
-        </footer>
+        {compact ? null : (
+          <>
+            <footer className="dock">
+              <Workbench
+                sections={sections}
+                viewed={viewed}
+                hintId={sections[index].id}
+                popId={popId}
+                ready={ready}
+                crafting={crafting}
+                crafted={crafted}
+                onCraft={craft}
+                onOpenTicket={() => setTicketOpen(true)}
+              />
+            </footer>
 
-        <LogoLoop logos={logos} />
+            <LogoLoop logos={logos} />
+          </>
+        )}
       </div>
 
       <PixelMenu
         open={menuOpen}
         onClose={closeMenu}
         crafted={crafted}
+        showQuick={!compact}
         onPickSection={(id) => {
           setMenuOpen(false);
+          if (compact) {
+            // on a phone the sections are on the page itself, so just scroll there
+            setTimeout(() => {
+              const el = document.getElementById(`sec-${id}`);
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 350);
+            return;
+          }
           setIndex(sections.findIndex((x) => x.id === id));
           openSection(id);
         }}
@@ -219,6 +249,13 @@ export default function App() {
         }}
         onTicket={() => {
           setMenuOpen(false);
+          if (compact && !crafted) {
+            setTimeout(() => {
+              const el = document.getElementById("flow-ticket");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 350);
+            return;
+          }
           setTicketOpen(true);
         }}
       />
